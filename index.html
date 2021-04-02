@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>One-armed bandit game</title>	
+	<link type="text/css" href="style.css" rel="stylesheet">
+</head>
+<body>		
+	<div id="automat">
+	
+		<div class="wrap">
+			<div class="tern one">	
+				<span class="front allside">&#9829</span>
+				<span class="back allside">&#9827</span>
+			</div>		
+		</div>
+
+		<div class="wrap">
+			<div class="tern two">	
+				<span class="front allside">&#9829</span>
+				<span class="back allside">&#9827</span>
+			</div>		
+		</div>
+
+		<div class="wrap">
+			<div class="tern three">	
+				<span class="front allside">&#9829</span>
+				<span class="back allside">&#9827</span>
+			</div>		
+		</div>	
+		
+		<div id="divinp">
+			<span id="press">Press checkbox</span>
+			<input id="inp" type="checkbox">
+		</div>
+		
+	</div>
+	
+	<script>	
+		var arrSuit = ["&#9829", "&#9830", "&#9827", "&#9824"]	
+
+		var check = document.getElementById("inp")
+		var tern = document.getElementsByClassName("tern")
+		var allside = document.getElementsByClassName("allside")
+
+		check.addEventListener("click", function(){
+			if (check.checked){
+			
+				for (var i = 0; i < 6; i++){
+					var temp = Math.floor(Math.random() * 4)
+				
+					allside[i].innerHTML = arrSuit[temp]
+					
+					if (arrSuit[temp] == "&#9829" ||
+					arrSuit[temp] == "&#9830"){
+						allside[i].style.color = "red"
+					}else{
+						allside[i].style.color = "black"
+					}					
+				}
+			
+				for (var i = 0; i < 3; i++){
+					tern[i].style.transform = "rotateX(7200deg)"
+				}
+			}
+			
+			if (!check.checked){
+			
+				for (var i = 0; i < 6; i++){
+					var temp = Math.floor(Math.random() * 4)
+				
+					allside[i].innerHTML = arrSuit[temp]
+					
+					if (arrSuit[temp] == "&#9829" ||
+					arrSuit[temp] == "&#9830"){
+						allside[i].style.color = "red"
+					}else{
+						allside[i].style.color = "black"
+					}					
+				}
+			
+				for (var i = 0; i < 3; i++){
+					tern[i].style.transform = ""
+				}
+			}
+		})		
+	</script>
+	
+</body>	
+</html>
